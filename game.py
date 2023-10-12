@@ -1,0 +1,97 @@
+player = game.create_sprite(2, 4)
+obst1 = game.create_sprite(0, 0)
+obst2 = game.create_sprite(1, 0)
+obst3 = game.create_sprite(2, 0)
+obst4 = game.create_sprite(3, 0)
+obst5 = game.create_sprite(4, 0)
+
+obst1.turn_right(90)
+obst2.turn_right(90)
+obst3.turn_right(90)
+obst4.turn_right(90)
+obst5.turn_right(90)
+
+fallWaitTime = 200
+
+def on_button_pressed_a():
+    player.move(-1)
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_button_pressed_b():
+    player.move(1)
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
+def onEvery_interval():
+    obstGen = randint(1, 5)
+    if(obstGen == 1):
+        obst1.move(1)
+        basic.pause(fallWaitTime)
+        obst1.move(1)
+        basic.pause(fallWaitTime)
+        obst1.move(1)
+        basic.pause(fallWaitTime)
+        obst1.move(1)
+        basic.pause(fallWaitTime)
+        basic.pause(500)
+        obst1.turn_right(180)
+        obst1.move(4)
+        obst1.turn_right(180)
+    elif(obstGen == 2):
+        obst2.move(1)
+        basic.pause(fallWaitTime)
+        obst2.move(1)
+        basic.pause(fallWaitTime)
+        obst2.move(1)
+        basic.pause(fallWaitTime)
+        obst2.move(1)
+        basic.pause(fallWaitTime)
+        basic.pause(500)
+        obst2.turn_right(180)
+        obst2.move(4)
+        obst2.turn_right(180)
+    elif(obstGen == 3):
+        obst3.move(1)
+        basic.pause(fallWaitTime)
+        obst3.move(1)
+        basic.pause(fallWaitTime)
+        obst3.move(1)
+        basic.pause(fallWaitTime)
+        obst3.move(1)
+        basic.pause(fallWaitTime)
+        basic.pause(500)
+        obst3.turn_right(180)
+        obst3.move(4)
+        obst3.turn_right(180)
+    elif(obstGen == 4):
+        obst4.move(1)
+        basic.pause(fallWaitTime)
+        obst4.move(1)
+        basic.pause(fallWaitTime)
+        obst4.move(1)
+        basic.pause(fallWaitTime)
+        obst4.move(1)
+        basic.pause(fallWaitTime)
+        basic.pause(500)
+        obst4.turn_right(180)
+        obst4.move(4)
+        obst4.turn_right(180)
+    elif(obstGen == 5):
+        obst5.move(1)
+        basic.pause(fallWaitTime)
+        obst5.move(1)
+        basic.pause(fallWaitTime)
+        obst5.move(1)
+        basic.pause(fallWaitTime)
+        obst5.move(1)
+        basic.pause(fallWaitTime)
+        basic.pause(500)
+        obst5.turn_right(180)
+        obst5.move(4)
+        obst5.turn_right(180)
+
+loops.every_interval(500, onEvery_interval)
+
+def on_forever():
+    if player.is_touching(obst1) or player.is_touching(obst2) or player.is_touching(obst3) or player.is_touching(obst4) or player.is_touching(obst5):
+        game.game_over()      
+forever(on_forever)
